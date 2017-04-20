@@ -16,7 +16,8 @@ export class Login {
 
   private user: string = '';
   private senha: string = '';
-  public usuario: Usuario[] = [];
+  //public usuario: Usuario;
+  returnUrl: string;
 
   constructor(public alert: AlertController, public alerta: Alert, public loginService: LoginService) {
 
@@ -28,14 +29,21 @@ export class Login {
     }else if(this.senha == ''){
         this.alerta.showAlert("Favor digitar a senha");
     }else{         
-         debugger;
-         this.usuario = this.loginService.recuperarUsuario(this.user);
 
-         if(this.usuario.length > 0){
-            console.log(this.usuario[0].usuario);
-         }else{
-           console.log("Vazio");
-         }
+        
+
+         this.loginService.recuperarUsuario(this.user);
+
+
+        var retrievedObject = localStorage.getItem('usuario');
+
+        console.log('usuario: ', JSON.parse(retrievedObject)); 
+
+
+        var usuario = JSON.parse(retrievedObject);
+
+        console.log(usuario[0]['empresa_cnpj']+" Usuário: "+usuario[0]['usuario']);
+
     }
   }
 

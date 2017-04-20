@@ -4,6 +4,7 @@ import {Http, Response, Headers, URLSearchParams,RequestOptions} from '@angular/
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 /**
  * @author - Arão Alves de Farias
@@ -27,9 +28,16 @@ export class Services<T> extends ServiceConfiguration{
     }
 
      postObject(serviceRequested:string,urlSearchParams: URLSearchParams): Observable<any>{
-         return this._http.post(this.getRequestURL(serviceRequested),urlSearchParams, this.getRequestOptions())
-            .map(this._extractData)
+         return this._http.post(this.getRequestURL(serviceRequested),urlSearchParams, this.getRequestOptions())   
+         .map(this._extractData)
             .catch(this._handleError);
+    }
+
+     postObject2(serviceRequested:string,urlSearchParams: URLSearchParams){
+         return this._http.post(this.getRequestURL(serviceRequested),urlSearchParams, this.getRequestOptions())
+            .toPromise()
+		 	.then(this._extractData)
+		 	.catch(this._handleError);
     }
 
      private _extractData(res:Response){
