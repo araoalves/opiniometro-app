@@ -1,11 +1,11 @@
-import {Services} from '../services/Services';
+import {Services} from '../../services/configuracoes/Services';
 import {Injectable} from '@angular/core';
 import {Http, URLSearchParams} from '@angular/http';
-import {Usuario} from '../models/Usuario';
-import {Alert} from '../utils/alert';
-import {Utils} from '../utils/utils';
-import {md5} from '../utils/md5';
-import {Principal} from '../pages/principal/principal';
+import {Usuario} from '../../models/Usuario';
+import {Alert} from '../../utils/alert';
+import {Utils} from '../../utils/utils';
+import {md5} from '../../utils/md5';
+import {Principal} from '../../pages/principal/principal';
 import { NavController, LoadingController } from 'ionic-angular';
 
 @Injectable()

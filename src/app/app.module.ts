@@ -7,12 +7,14 @@ import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { Login } from '../pages/login/login';
 import { Principal } from '../pages/principal/principal';
+import { ErrorMessages } from "../services/validacoes/error-messages";
 
 @NgModule({
   declarations: [
     MyApp,
     Login,
-    Principal
+    Principal,
+    ErrorMessages
   ],
   imports: [
     BrowserModule,

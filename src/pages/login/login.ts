@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import {AlertController } from 'ionic-angular';
 import {Alert} from '../../utils/alert';
 import {Utils} from '../../utils/utils';
-import {LoginService} from '../../services/LoginService';
+import {LoginService} from '../../services/services_pages/LoginService';
 import 'rxjs/add/operator/catch';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from "@angular/forms";
+import { CustomValidators } from "../../services/validacoes/custom-validators";
 
 @Component({
   selector: 'page-login',
@@ -13,26 +15,39 @@ import 'rxjs/add/operator/catch';
 
 export class Login {
 
-  private user: string = '';
-  private senha: string = '';
+  private usuario: AbstractControl;
+  private senha: AbstractControl;
+  
+  loginForm: FormGroup;
 
   constructor(
         public alert: AlertController, 
         public alerta: Alert, 
         public loginService: 
         LoginService, 
-        public utils: Utils) {
-          
-        }
+        public utils: Utils,
+        public fb: FormBuilder) {
 
-  logar( alert: AlertController){
-    if(this.user == ''){
-        this.alerta.showAlert("Favor digitar o usuário");
-    }else if(this.senha == ''){
-        this.alerta.showAlert("Favor digitar a senha");
-    }else{         
-        this.loginService.recuperarUsuario(this.user, this.senha);
-    }
-  } 
+  this.loginForm = fb.group({
+      'usuario': [
+        '',
+        Validators.compose([Validators.required, CustomValidators.usernameValidator])
+      ],
+
+      'senha': [
+        '',
+        Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(16),
+          CustomValidators.passwordValidator, CustomValidators.noEmptyWhiteSpace])
+      ]
+    });
+
+    this.usuario = this.loginForm.controls['usuario'];
+    this.senha = this.loginForm.controls['senha'];
+          
+  }
+
+  signin(form: any) {
+    this.loginService.recuperarUsuario(form.usuario, form.senha);
+  }
 
 }

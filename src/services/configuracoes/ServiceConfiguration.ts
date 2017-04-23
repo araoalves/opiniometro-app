@@ -1,7 +1,9 @@
 export class ServiceConfiguration{
     
-    private _url:string = "http://localhost:85/";
-    private _api:string = "GIT/opiniometro/";
+    //private _url:string = "http://localhost:85/";
+    private _url:string = "http://www.nodeti.com.br/";
+    //private _api:string = "GIT/opiniometro/";
+    private _api:string = "opiniometro/";
     //private _tokenApplication:string = "1234567890";
 
     public SISTEMA_GERENCIADOR_API_LOGAR: string = "recuperarEmpresasPost";
