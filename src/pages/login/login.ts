@@ -11,7 +11,7 @@ import { CustomValidators } from "../../services/validacoes/custom-validators";
   selector: 'page-login',
   templateUrl: 'login.html',
   providers: [Alert,LoginService,Utils]
-})
+}) 
 
 export class Login {
 
