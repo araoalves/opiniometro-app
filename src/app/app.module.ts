@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { Login } from '../pages/login/login';
 import { Principal } from '../pages/principal/principal';
 import { ErrorMessages } from "../services/validacoes/error-messages";
+import { Alertas } from '../utils/alertas';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ErrorMessages } from "../services/validacoes/error-messages";
   providers: [
     StatusBar,
     SplashScreen,
+    Alertas,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

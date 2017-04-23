@@ -2,7 +2,7 @@ import {Services} from '../../services/configuracoes/Services';
 import {Injectable} from '@angular/core';
 import {Http, URLSearchParams} from '@angular/http';
 import {Usuario} from '../../models/Usuario';
-import {Alert} from '../../utils/alert';
+import {Alertas} from '../../utils/alertas';
 import {Utils} from '../../utils/utils';
 import {md5} from '../../utils/md5';
 import {Principal} from '../../pages/principal/principal';
@@ -11,7 +11,7 @@ import { NavController, LoadingController } from 'ionic-angular';
 @Injectable()
 export class LoginService extends Services<Usuario>{
     
-    constructor(_http:Http, public alerta: Alert, public utils: Utils, public navCtrl: NavController, public loadingCtrl: LoadingController){
+    constructor(_http:Http, public alerta: Alertas, public utils: Utils, public navCtrl: NavController, public loadingCtrl: LoadingController){
         super(_http);
     }
 

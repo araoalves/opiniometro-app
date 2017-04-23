@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {AlertController } from 'ionic-angular';
-import {Alert} from '../../utils/alert';
 import {Utils} from '../../utils/utils';
 import {LoginService} from '../../services/services_pages/LoginService';
 import 'rxjs/add/operator/catch';
@@ -10,7 +9,7 @@ import { CustomValidators } from "../../services/validacoes/custom-validators";
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
-  providers: [Alert,LoginService,Utils]
+  providers: [LoginService,Utils]
 }) 
 
 export class Login {
@@ -21,8 +20,7 @@ export class Login {
   loginForm: FormGroup;
 
   constructor(
-        public alert: AlertController, 
-        public alerta: Alert, 
+        public alert: AlertController,  
         public loginService: 
         LoginService, 
         public utils: Utils,
