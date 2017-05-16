@@ -1,7 +1,9 @@
 page-principal {
 
     ion-content {
-    background-image: url('../assets/images/fundo.jpg');
+	background:linear-gradient( rgba(0, 0, 0, 0.7), 
+	rgba(0, 0, 0, 0.7) ),
+	url('../assets/images/fundo.jpg');
     -webkit-background-image: url('../assets/images/fundo.jpg');
     }
 }
